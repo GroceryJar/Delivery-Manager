@@ -18,6 +18,7 @@ require.config({
 		//Vendor files
 		jquery: "vendors/jquery/jquery",
 		bootstrap: "vendors/bootstrap/bootstrap",
+		ngGrid: "vendors/angular/ng-grid.debug",
 		bootstrapSelect: "vendors/bootstrap/bootstrap-select",
 		angular: "vendors/angular/angular",
 		angularUIRoute: "vendors/angular/angular-ui-router",
@@ -31,7 +32,7 @@ require.config({
 	},
 	shim:{
 		'application':{
-			deps: ['jquery','angular', "angularUIRoute","ngSanitize", "angularRoute"]
+			deps: ['jquery','angular', "angularUIRoute","ngSanitize", "angularRoute", "ngGrid"]
 		},
 		'ajaxService':{
 			deps: ['angular']
@@ -53,6 +54,9 @@ require.config({
 		},
 		'angularRoute':  {
 			deps: ['angular']	
+		},
+		'ngGrid': {
+			deps: ['angular', 'jquery']
 		}
 	}
 });

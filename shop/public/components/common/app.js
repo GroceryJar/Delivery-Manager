@@ -9,6 +9,7 @@ define([
 			"ajaxService",
 			"authService",
 			"ngSanitize",
-			"ngRoute"
+			"ngRoute",
+			"ngGrid"
 			]);
 });
