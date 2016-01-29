@@ -59,6 +59,10 @@ $ git commit -am "make it better"
 $ git push heroku master
 
 
+#Push github:
+
+$ git push origin master
+
 # Resolve Heroku issues:
 
 sudo apt-get install ruby1.9.1
