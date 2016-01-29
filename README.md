@@ -29,22 +29,29 @@ Distance from Source to other destination
 4. Sequence page will contain a button option to show Map route as well
 
 # Backend
+
 Install npm
+
 Install node
 
 Go to project folder and run "npm install"
+
 start the server - "node server.js"
+
 Open "http://localhost:8080/" in browser
 
 
 #Frontend
+
 Install sass. Refer: http://sass-lang.com/install
+
 Update sass files and run "sass --sourcemap=none scss/main.scss css/main.css" inside public folder
 
 
 # Resolve Heroku issues:
 
 sudo apt-get install ruby1.9.1
+
 sudo apt-get install ruby1.9.3
 
 http://stackoverflow.com/questions/1892877/how-do-i-make-ruby-1-9-the-default-ruby-on-ubuntu?lq=1
