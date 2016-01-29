@@ -71,6 +71,11 @@ define(['application'], function(app) {
                 enableCellEdit: false,
                 columnDefs: [
                     {
+                        field: 'orderNumber',
+                        displayName: 'Order Number',
+                        width: '100px'
+                    },
+                    {
                         field: 'customerName',
                         displayName: 'Customer Name',
                         width: '100px'
@@ -113,11 +118,6 @@ define(['application'], function(app) {
                     {
                         field: 'dateOfOrder',
                         displayName: 'Date Of Order',
-                        width: '100px'
-                    },
-                    {
-                        field: 'orderNumber',
-                        displayName: 'Order Number',
                         width: '100px'
                     }
                 ]
