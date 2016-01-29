@@ -1,6 +1,7 @@
 # Delivery Manager
 Application to make task of delivery boy easier
 
+https://deliverymanager.herokuapp.com/
 
 # App for Deliveryboy -
 
@@ -46,6 +47,16 @@ Open "http://localhost:8080/" in browser
 Install sass. Refer: http://sass-lang.com/install
 
 Update sass files and run "sass --sourcemap=none scss/main.scss css/main.css" inside public folder
+
+# Deploy your application
+
+Commit your code to the repository and deploy it to Heroku using Git.
+
+$ git add .
+
+$ git commit -am "make it better"
+
+$ git push heroku master
 
 
 # Resolve Heroku issues:
