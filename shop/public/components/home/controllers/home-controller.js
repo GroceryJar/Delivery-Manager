@@ -2,6 +2,67 @@
 define(['application'], function(app) {
     app.register.controller('homeController', ["$scope", "ajaxService", "$timeout",
         function($scope, ajaxService, $timeout) {
+
+            function initGeolocation()
+            {
+                if( navigator.geolocation )
+                {
+                    navigator.geolocation.getCurrentPosition( success, fail );
+                }
+                else
+                {
+                    alert("Sorry, your browser does not support geolocation services.");
+                }
+            }
+
+            function success(position)
+            {
+                $scope.long = position.coords.longitude;
+                $scope.lat = position.coords.latitude;
+                showMap();
+
+            }
+
+            function fail()
+            {
+
+            }
+
+            function showMap() {
+                var directionsService = new google.maps.DirectionsService();
+                var directionsDisplay = new google.maps.DirectionsRenderer();
+
+                var myOptions = {
+                    zoom:7,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+
+                var map = new google.maps.Map(document.getElementById("map"), myOptions);
+                directionsDisplay.setMap(map);
+
+                var points = [];
+                for(var count = 0; count < $scope.myData.length; count++) {
+                    points.push({
+                        location: $scope.myData[count].address,
+                        stopover:true
+                    });
+                }
+
+                var request = {
+                    origin: new google.maps.LatLng($scope.lat, $scope.long),
+                    destination: new google.maps.LatLng($scope.lat, $scope.long),
+                    waypoints: points,
+                    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                };
+
+                directionsService.route(request, function(response, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+
+                        directionsDisplay.setDirections(response);
+                    }
+                });
+            }
+
             $scope.myData = [];
             $scope.gridOptions = {
                 data: 'myData',
@@ -67,8 +128,8 @@ define(['application'], function(app) {
                  ajaxService.get({
                     url: "/data/home/home.json"
                 }).then(function(response) {
-                     debugger;
                     $scope.myData = response.data;
+                     initGeolocation();
                 });
             })();
         }

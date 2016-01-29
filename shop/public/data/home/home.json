@@ -36,5 +36,65 @@
       "type": "Noraml",
       "dateOfOrder": "30/01/2016",
       "orderNumber": "MS2233"
-    }
-  ]
+    },
+  {
+    "customerName":"Govi",
+    "address": "Jubilee hills",
+    "pinCode": "500033",
+    "price": "20,000",
+    "productName": "Washing machine",
+    "paymentStatus": "COD",
+    "phone": "991155344",
+    "type": "Noraml",
+    "dateOfOrder": "30/01/2016",
+    "orderNumber": "MS9933"
+  },
+  {
+    "customerName":"Sudha",
+    "address": "Miyapur",
+    "pinCode": "500049",
+    "price": "50,000",
+    "productName": "IPhone",
+    "paymentStatus": "COD",
+    "phone": "9900223344",
+    "type": "Noraml",
+    "dateOfOrder": "30/01/2016",
+    "orderNumber": "MS2233"
+  },
+  {
+    "customerName":"Sumeet Singh",
+    "address": "Kokapet",
+    "pinCode": "500075",
+    "price": "1500",
+    "productName": "Bag",
+    "paymentStatus": "COD",
+    "phone": "9911223377",
+    "type": "Noraml",
+    "dateOfOrder": "30/01/2016",
+    "orderNumber": "MS2233"
+  },
+  {
+    "customerName":"Jeevan",
+    "address": "Falaknuma",
+    "pinCode": "500053",
+    "price": "30,000",
+    "productName": "Samsung",
+    "paymentStatus": "COD",
+    "phone": "9914423344",
+    "type": "Noraml",
+    "dateOfOrder": "30/01/2016",
+    "orderNumber": "MS2233"
+  },
+  {
+    "customerName":"Ankita",
+    "address": "Banjara hills",
+    "pinCode": "500034",
+    "price": "20,000",
+    "productName": "One Plus",
+    "paymentStatus": "COD",
+    "phone": "9911223344",
+    "type": "Noraml",
+    "dateOfOrder": "30/01/2016",
+    "orderNumber": "MS2261"
+  }
+]

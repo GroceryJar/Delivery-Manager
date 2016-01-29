@@ -64,4 +64,8 @@ body {
   border: 1px solid #d4d4d4;
   height: 300px; }
 
+#map {
+  width: 100% !important;
+  position: relative; }
+
 /*# sourceMappingURL=main.css.map */
