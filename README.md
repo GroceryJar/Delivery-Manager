@@ -5,29 +5,33 @@ https://deliverymanager.herokuapp.com/
 
 # App for Deliveryboy -
 
-1. Current location of Delivery boy
+
+1. Once delivery boy opens app, it will get the location of him
+
 2. Delivery boy can see all the orders in app with following information based sorted by date
 
-	a. Name
+a. Name
 
-	b. Address
+  	b. Address
 
-	c. Pincode (for distance from Source) == 1 km -- 100 weight
+c. Pin Code (for distance from Source)
 
-	d. Price == 10,000 -- 100 weight (Get Max price of order)
+  	d. Price
 
-	e. Payment Status - Paid or Not Paid === Paid 100 weight
+e. Payment Status
 
-	f. Mobile Phone (To send automatic time of arrival based on distance)
+f. Mobile Phone (To send automatic time of arrival based on distance)
 
-	g. Type of Delivery - One day === One day Delivery 1000 weight
+g. Type of Delivery (One day or normal)
 
-	h. Date of order === 1 day delay (100 weight less weight)
+  	h. Date of order
 
-Distance from Source to other destination
+3. Generate Order -  It will assign n orders to delivery boy based on Weight algorithm. It will be decided based on Type of delivery, date of order, price and payment status. Weigth will be assigned to Type of delivery, date of order, price and payment status
 
-3. Generate Order Sequence will show correct sequence of order
-4. Sequence page will contain a button option to show Map route as well
+Need to decide the weigth and decide algorithm to solve it.
+
+4. Show Map - It will show map based on current location using shortest path or TSP algorithm
+
 
 # Backend
 
