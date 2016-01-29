@@ -5,32 +5,43 @@ https://deliverymanager.herokuapp.com/
 
 # App for Deliveryboy -
 
-
 1. Once delivery boy opens app, it will get the location of him
 
-2. Delivery boy can see all the orders in app with following information based sorted by date
+2. Delivery boy can see all the orders that he has to deliver for the day in app with following information based sorted by date
 
-a. Name
+    a. Name
 
   	b. Address
 
-c. Pin Code (for distance from Source)
+    c. Pin Code (for distance from Source)
 
   	d. Price
 
-e. Payment Status
+    e. Payment Status
 
-f. Mobile Phone (To send automatic time of arrival based on distance)
+    f. Mobile Phone (To send automatic time of arrival based on distance)
 
-g. Type of Delivery (One day or normal)
+    g. Type of Delivery (One day or normal)
 
   	h. Date of order
 
-3. Generate Order -  It will assign n orders to delivery boy based on Weight algorithm. It will be decided based on Type of delivery, date of order, price and payment status. Weigth will be assigned to Type of delivery, date of order, price and payment status
+    i. Order Number
 
-Need to decide the weigth and decide algorithm to solve it.
+3. Show Map - It will show map based on current location using shortest path or TSP algorithm
 
-4. Show Map - It will show map based on current location using shortest path or TSP algorithm
+Since google api’s are already providing this functionality, our job is very easy (https://developers.google.com/maps/documentation/javascript/directions)
+
+We can set starting and end point same and multiple wait points where delivery boy has to deliver. Only limitation is that it allows max 10 points (2 origin + 8  way points)
+
+4. We can implement functionality where Client can see real time location of delivery boy so that they can collection items in time
+
+5. More advance options - If customer on their GPS or enable location from website, delivery boy can easily track customer and deliver quickly
+
+Important Links:
+
+https://developers.google.com/maps/documentation/javascript/directions
+
+https://developers.google.com/maps/documentation/javascript/distancematrix
 
 
 # Backend
