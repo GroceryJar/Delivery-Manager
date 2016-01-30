@@ -62,6 +62,9 @@ define(['application'], function(app) {
                     }
                 });
             }
+            $scope.generateMap = function() {
+                showMap();
+            }
 
             $scope.myData = [];
             $scope.gridOptions = {
@@ -83,7 +86,8 @@ define(['application'], function(app) {
                     {
                         field: 'address',
                         displayName: 'Address',
-                        width: '100px'
+                        width: '100px',
+                        enableCellEdit: true
                     },
                     {
                         field: 'pinCode',

@@ -1,3 +1,14 @@
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('../fonts/proximanova-regular-webfont.eot');
+    src: url('../fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/proximanova-regular-webfont.woff2') format('woff2'),
+    url('../fonts/proximanova-regular-webfont.woff') format('woff'),
+    url('../fonts/proximanova-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html {
     overflow-y: scroll;
     min-height: 100%;
@@ -7,7 +18,7 @@ html {
 body { 
     margin: 0 auto;
     padding: 0;
-    font-family: $find-font-family;
+    font-family: 'Proxima Nova', sans-serif;
     width: 1024px;
 	color: #292d2f;
 	background-color:#eff3f4;
@@ -24,4 +35,51 @@ body {
     width: 100%!important;
     position: relative;
 }
-
+.ngHeaderCell {
+    background-color: #00b4e5!important;
+    bottom: 0;
+    color: #FFF!important;
+    position: absolute;
+    top: 0;
+}
+.ngCellText {
+    background-color: #FFF!important;
+    border: solid 1px #DDEEEE!important;
+}
+.homeHeading {
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    clear: left;
+}
+.info {
+    font-size: 12px;
+}
+.generateMap:hover {
+    color: #FFF;
+    opacity: .5;
+    text-decoration: none;
+}
+.buttonContainer {
+    text-align: center;
+}
+.generateMap {
+    display: inline-block;
+    margin-top: 20px;
+    height: 40px;
+    width: 138px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #00b4e5;
+    color: #FFF;
+    text-decoration: none;
+}
+.clientInput {
+    height: 40px;
+    width: 200px;
+    border: none;
+    padding: 5px;
+    font-size: 13px;
+    margin-left: 100px;
+}
