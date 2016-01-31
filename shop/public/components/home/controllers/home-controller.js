@@ -66,6 +66,25 @@ define(['application'], function(app) {
                 showMap();
             }
 
+            $scope.trackLocation = function() {
+                if($scope.orderNumber) {
+                    $scope.changeRoute('/' + $scope.orderNumber + '/order');
+                }
+                else {
+                    alert('Enter correct order number');
+                }
+            }
+
+            $scope.changeRoute = function(url, forceReload) {
+                $scope = $scope || angular.element(document).scope();
+                if(forceReload || $scope.$$phase) { // that's right TWO dollar signs: $$phase
+                    window.location = url;
+                } else {
+                    $location.path(url);
+                    $scope.$apply();
+                }
+            };
+
             $scope.myData = [];
             $scope.gridOptions = {
                 data: 'myData',

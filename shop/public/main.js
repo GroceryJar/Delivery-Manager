@@ -8,14 +8,10 @@ require.config({
 		//Include all the Controllers
 		headerCtrl:"common/controllers/header-controller",
 		homeCtrl: "home/controllers/home-controller",
-		categoryCtrl: "category/controllers/category-controller",
-		listingCtrl: "listing/controllers/listing-controller",
-		itemCtrl: "item/controllers/item-controller",
-		loginCtrl: "login/controllers/login-controller",
-		registerCtrl: "login/controllers/register-controller",
-		logoutCtrl: "login/controllers/logout-controller",
+		orderCtrl: "order/controllers/order-controller",
 		
 		//Vendor files
+		socketio: "vendors/socket.io",
 		jquery: "vendors/jquery/jquery",
 		bootstrap: "vendors/bootstrap/bootstrap",
 		ngGrid: "vendors/angular/ng-grid.debug",
@@ -32,7 +28,10 @@ require.config({
 	},
 	shim:{
 		'application':{
-			deps: ['jquery','angular', "angularUIRoute","ngSanitize", "angularRoute", "ngGrid"]
+			deps: ['jquery', 'socketio', 'angular', "angularUIRoute","ngSanitize", "angularRoute", "ngGrid"]
+		},
+		'socketio': {
+			exports: 'io'
 		},
 		'ajaxService':{
 			deps: ['angular']
@@ -62,8 +61,8 @@ require.config({
 });
 
 // Project level dependencies
-require(['application', "myRoutes", "jquery", "bootstrap", "bootstrapSelect"],
-		function(app, routes){
+require(["application", "socketio", "myRoutes", "jquery", "bootstrap", "bootstrapSelect"],
+		function(app, io, routes){
 			var $html = angular.element(document.getElementsByTagName('body')[0]);
 
 			angular.element().ready(function(){

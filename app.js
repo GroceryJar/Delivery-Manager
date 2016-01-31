@@ -10,6 +10,13 @@ var express = require('express'),
     LocalStrategy = require('passport-local').Strategy,
     connect = require('connect');
 
+var server = require('http').createServer(app);
+var io = require('socket.io')({
+    "transports": ["xhr-polling"],
+    "polling duration": 10,
+    'log level': 1
+});
+
 //this line is for openshift deployment
 var server_port = process.env.PORT || 8080;
 var routes = require('./routes/index');
@@ -43,6 +50,16 @@ app.use(function(req, res) {
     res.sendfile(__dirname + '/shop/public/index.html');
 });
 
-app.listen(server_port);
+io.listen(server);
 
-console.log('Magic happens on port ' + server_port);
+io.sockets.on('connection', function (socket) {
+    socket.on('location', function (data) {
+        io.sockets.emit('location', data);
+    });
+});
+
+server.listen(server_port, function() {
+    console.log('Magic happens on port ' + server_port);
+});
+
+

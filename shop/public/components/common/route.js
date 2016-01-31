@@ -54,6 +54,34 @@ define(["application"], function(app) {
                             templateUrl: "components/common/templates/footer.html"
                         }
                     }
+                })
+
+                .state('order', {
+                    url: '/:number/order',
+                    views: {
+                        //overall structre of page is decided by pageContent
+                        //headerView, layoutView and footerView are the parts of the page
+                        "pageContent": {
+                            templateUrl: "components/common/templates/main-view.html"
+                        },
+                        "headerView@order": {
+                            templateUrl: "components/common/templates/header.html"
+                        },
+                        "layoutView@order": {
+                            templateUrl: "components/order/templates/view.html",
+                            controller: "orderController as hc",
+                            access: {restricted: false},
+                            resolve: {
+                                load: ["$q", "$rootScope", function($q, $rootScope){
+                                    var dependency = ["orderCtrl"];
+                                    return resolveDependencies($q, $rootScope, dependency);
+                                }]
+                            }
+                        },
+                        "footerView@order": {
+                            templateUrl: "components/common/templates/footer.html"
+                        }
+                    }
                 });
         }
     ])

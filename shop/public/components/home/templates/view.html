@@ -4,8 +4,8 @@
 </form>
 <div class="buttonContainer">
     <button ng-click="generateMap()" class="generateMap">Generate Map</button>
-    <input class="clientInput" type="text" placeholder="Enter order number"/>
-    <button class="generateMap">Track client</button>
+    <input class="clientInput" ng-model="orderNumber" type="text" placeholder="Enter order number"/>
+    <button ng-click="trackLocation()" class="generateMap">Track client</button>
 </div>
 
 <div class="homeHeading"><span>Follow map to deliver items quickly </span><span class="info"> (Alphabetically ordered locations will guide you to deliver in shortest path)</span></div>
