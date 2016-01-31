@@ -76,8 +76,8 @@ define(['application', 'socketio'], function(app, io) {
 
             function mapInitialize() {
                 map = new google.maps.Map(document.getElementById("map-canvas"), {
-                    zoom: 5,
-                    center: new google.maps.LatLng(35.713819, 139.7598354)
+                    zoom: 10,
+                    center: new google.maps.LatLng(17.3700, 78.4800)
                 });
                 infowindow = new google.maps.InfoWindow({ content: 'Test' });
                 google.maps.event.addListener(map, 'click', function() {
@@ -160,7 +160,6 @@ define(['application', 'socketio'], function(app, io) {
                 return userInfo;
             }
             var init = (function(){
-                debugger;
                 mapInitialize();
                 currentUserInfo = initLocationSharing(userLocationUpdate);
             })();
