@@ -102,6 +102,12 @@ body {
 .buttonContainer {
   text-align: center; }
 
+.buttonContainer span {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  padding-right: 20px; }
+
 .generateMap {
   display: inline-block;
   margin-top: 20px;

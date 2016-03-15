@@ -85,6 +85,28 @@ define(['application'], function(app) {
                 }
             };
 
+            function getChangeAmount(data) { 
+                var rem = 0;
+                data.forEach(function(item) {                    
+                    rem = parseInt(item.price) % 10;
+                    if(rem <= 5) {
+                        item.changeAmount = rem; 
+                    }
+                    else {
+                        item.changeAmount = 10 - rem;    
+                    }
+                });
+                return data;
+            };
+
+            function totalChange(data) {
+                var sum = 0;
+                data.forEach(function(item) {                    
+                    sum += item.changeAmount;
+                });
+                return sum;
+            };
+
             $scope.myData = [];
             $scope.gridOptions = {
                 data: 'myData',
@@ -108,14 +130,19 @@ define(['application'], function(app) {
                         width: '100px',
                         enableCellEdit: true
                     },
+                    // {
+                    //     field: 'pinCode',
+                    //     displayName: 'Pin Code',
+                    //     width: '100px'
+                    // },
                     {
-                        field: 'pinCode',
-                        displayName: 'Pin Code',
+                        field: 'price',
+                        displayName: 'Price (Rs.)',
                         width: '100px'
                     },
                     {
-                        field: 'price',
-                        displayName: 'Price',
+                        field: 'changeAmount',
+                        displayName: 'Change (Rs.)',
                         width: '100px'
                     },
                     {
@@ -151,8 +178,9 @@ define(['application'], function(app) {
                  ajaxService.get({
                     url: "/data/home/home.json"
                 }).then(function(response) {
-                    $scope.myData = response.data;
-                     initGeolocation();
+                    $scope.myData = getChangeAmount(response.data);
+                    $scope.totalChange = totalChange($scope.myData);
+                    initGeolocation();
                 });
             })();
         }
