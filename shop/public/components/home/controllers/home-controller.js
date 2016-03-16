@@ -3,28 +3,22 @@ define(['application'], function(app) {
     app.register.controller('homeController', ["$scope", "ajaxService", "$timeout",
         function($scope, ajaxService, $timeout) {
 
-            function initGeolocation()
-            {
-                if( navigator.geolocation )
-                {
-                    navigator.geolocation.getCurrentPosition( success, fail );
-                }
-                else
-                {
+            function initGeolocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(success, fail);
+                } else {
                     alert("Sorry, your browser does not support geolocation services.");
                 }
             }
 
-            function success(position)
-            {
+            function success(position) {
                 $scope.long = position.coords.longitude;
                 $scope.lat = position.coords.latitude;
                 showMap();
 
             }
 
-            function fail()
-            {
+            function fail() {
 
             }
 
@@ -32,8 +26,8 @@ define(['application'], function(app) {
                 var directionsService = new google.maps.DirectionsService();
                 var directionsDisplay = new google.maps.DirectionsRenderer();
 
-                var myOptions = {
-                    zoom:7,
+                var myOptions = {   
+                    zoom: 7,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 }
 
@@ -41,10 +35,10 @@ define(['application'], function(app) {
                 directionsDisplay.setMap(map);
 
                 var points = [];
-                for(var count = 0; count < $scope.myData.length; count++) {
+                for (var count = 0; count < $scope.myData.length; count++) {
                     points.push({
                         location: $scope.myData[count].address,
-                        stopover:true
+                        stopover: true
                     });
                 }
 
@@ -52,6 +46,7 @@ define(['application'], function(app) {
                     origin: new google.maps.LatLng($scope.lat, $scope.long),
                     destination: new google.maps.LatLng($scope.lat, $scope.long),
                     waypoints: points,
+                    optimizeWaypoints: true,
                     travelMode: google.maps.DirectionsTravelMode.DRIVING
                 };
 
@@ -63,21 +58,21 @@ define(['application'], function(app) {
                 });
             }
             $scope.generateMap = function() {
+
                 showMap();
             }
 
             $scope.trackLocation = function() {
-                if($scope.orderNumber) {
+                if ($scope.orderNumber) {
                     $scope.changeRoute('/' + $scope.orderNumber + '/order');
-                }
-                else {
+                } else {
                     alert('Enter correct order number');
                 }
             }
 
             $scope.changeRoute = function(url, forceReload) {
                 $scope = $scope || angular.element(document).scope();
-                if(forceReload || $scope.$$phase) { // that's right TWO dollar signs: $$phase
+                if (forceReload || $scope.$$phase) { // that's right TWO dollar signs: $$phase
                     window.location = url;
                 } else {
                     $location.path(url);
@@ -85,15 +80,14 @@ define(['application'], function(app) {
                 }
             };
 
-            function getChangeAmount(data) { 
+            function getChangeAmount(data) {
                 var rem = 0;
-                data.forEach(function(item) {                    
+                data.forEach(function(item) {
                     rem = parseInt(item.price) % 10;
-                    if(rem <= 5) {
-                        item.changeAmount = rem; 
-                    }
-                    else {
-                        item.changeAmount = 10 - rem;    
+                    if (rem <= 5) {
+                        item.changeAmount = rem;
+                    } else {
+                        item.changeAmount = 10 - rem;
                     }
                 });
                 return data;
@@ -101,7 +95,7 @@ define(['application'], function(app) {
 
             function totalChange(data) {
                 var sum = 0;
-                data.forEach(function(item) {                    
+                data.forEach(function(item) {
                     sum += item.changeAmount;
                 });
                 return sum;
@@ -113,18 +107,15 @@ define(['application'], function(app) {
                 enableCellSelection: true,
                 enableRowSelection: false,
                 enableCellEdit: false,
-                columnDefs: [
-                    {
+                columnDefs: [{
                         field: 'orderNumber',
                         displayName: 'Order Number',
                         width: '100px'
-                    },
-                    {
+                    }, {
                         field: 'customerName',
                         displayName: 'Customer Name',
                         width: '100px'
-                    },
-                    {
+                    }, {
                         field: 'address',
                         displayName: 'Address',
                         width: '100px',
@@ -139,33 +130,27 @@ define(['application'], function(app) {
                         field: 'price',
                         displayName: 'Price (Rs.)',
                         width: '100px'
-                    },
-                    {
+                    }, {
                         field: 'changeAmount',
                         displayName: 'Change (Rs.)',
                         width: '100px'
-                    },
-                    {
+                    }, {
                         field: 'productName',
                         displayName: 'Product Name',
                         width: '100px'
-                    },
-                    {
+                    }, {
                         field: 'paymentStatus',
                         displayName: 'Payment Status',
                         width: '100px'
-                    },
-                    {
+                    }, {
                         field: 'phone',
                         displayName: 'Phone',
                         width: '100px'
-                    },
-                    {
+                    }, {
                         field: 'type',
                         displayName: 'Delivery Type',
                         width: '100px'
-                    },
-                    {
+                    }, {
                         field: 'dateOfOrder',
                         displayName: 'Date Of Order',
                         width: '100px'
@@ -174,8 +159,8 @@ define(['application'], function(app) {
             };
 
             // Send ajax request on page load and fetch user related data
-            var init = (function(){
-                 ajaxService.get({
+            var init = (function() {
+                ajaxService.get({
                     url: "/data/home/home.json"
                 }).then(function(response) {
                     $scope.myData = getChangeAmount(response.data);
