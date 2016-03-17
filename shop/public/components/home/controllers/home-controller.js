@@ -85,7 +85,7 @@ define(['application'], function(app) {
                 data.forEach(function(item) {
                     rem = parseInt(item.price) % 10;
                     if (rem <= 5) {
-                        item.changeAmount = rem;
+                        item.changeAmount = 5 - rem;
                     } else {
                         item.changeAmount = 10 - rem;
                     }
