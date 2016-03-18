@@ -7,7 +7,7 @@
       "productName": "Moto G",
       "paymentStatus": "COD",
       "phone": "8179458386",
-      "type": "Normal",
+      "type": "P1",
       "dateOfOrder": "30/01/2016",
       "orderNumber": "MS1234"
     },
@@ -20,7 +20,7 @@
       "productName": "Nexus",
       "paymentStatus": "Paid",
       "phone": "9988776655",
-      "type": "OneDay",
+      "type": "P0",
       "dateOfOrder": "31/01/2016",
       "orderNumber": "MS5544"
     },
@@ -33,7 +33,7 @@
       "productName": "IPhone",
       "paymentStatus": "COD",
       "phone": "9911223344",
-      "type": "Normal",
+      "type": "P0",
       "dateOfOrder": "30/01/2016",
       "orderNumber": "MS0133"
     },
@@ -45,7 +45,7 @@
     "productName": "Washing machine",
     "paymentStatus": "COD",
     "phone": "991155344",
-    "type": "Normal",
+    "type": "P1",
     "dateOfOrder": "30/01/2016",
     "orderNumber": "MS9933"
   },
@@ -57,7 +57,7 @@
     "productName": "IPhone",
     "paymentStatus": "COD",
     "phone": "9900223344",
-    "type": "Normal",
+    "type": "P1",
     "dateOfOrder": "30/01/2016",
     "orderNumber": "MS7033"
   },
@@ -69,7 +69,7 @@
     "productName": "Bag",
     "paymentStatus": "COD",
     "phone": "9911223377",
-    "type": "Normal",
+    "type": "P1",
     "dateOfOrder": "30/01/2016",
     "orderNumber": "MS6133"
   },
@@ -81,7 +81,7 @@
     "productName": "Samsung",
     "paymentStatus": "Paid",
     "phone": "9914423344",
-    "type": "Normal",
+    "type": "P1",
     "dateOfOrder": "30/01/2016",
     "orderNumber": "MS9233"
   },
@@ -93,7 +93,7 @@
     "productName": "One Plus",
     "paymentStatus": "Paid",
     "phone": "9911223344",
-    "type": "Normal",
+    "type": "P1",
     "dateOfOrder": "30/01/2016",
     "orderNumber": "MS2261"
   }

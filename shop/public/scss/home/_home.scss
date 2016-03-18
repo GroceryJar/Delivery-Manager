@@ -87,5 +87,16 @@ body {
     border: none;
     padding: 5px;
     font-size: 13px;
-    margin-left: 100px;
+    margin-left: 0px;
+}
+
+@media (min-width:768px) {
+    
+}
+@media (min-width:768px) and (max-width:991px) {
+}
+@media (min-width:992px) {
+    .clientInput {
+        margin-left: 100px;
+    }   
 }

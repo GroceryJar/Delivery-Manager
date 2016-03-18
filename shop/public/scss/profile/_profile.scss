@@ -25,5 +25,22 @@ body {
 	text-align: center;
 	font-size: 12px;
 }
-#map-canvas  { height: 600px; width:100%; }
-#user-number { font-size: 15px; font-weight: bold; font-color:black;}
+.profile {
+    padding-top: 10px;
+    height: 400px;
+}
+.profile label {
+    font-size: 16px;
+}
+.profile input {
+    
+}
+.profile button {
+    display: inline-block;
+    margin-left: 10px;
+    height: 30px;
+    width: 200px;
+    background-color: #00b4e5;
+    border: none;
+    color: #fff;
+}

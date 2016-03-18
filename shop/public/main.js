@@ -9,6 +9,7 @@ require.config({
 		headerCtrl:"common/controllers/header-controller",
 		homeCtrl: "home/controllers/home-controller",
 		orderCtrl: "order/controllers/order-controller",
+		profileCtrl: "profile/controllers/profile-controller",
 		
 		//Vendor files
 		socketio: "vendors/socket.io",

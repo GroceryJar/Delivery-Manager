@@ -55,7 +55,33 @@ define(["application"], function(app) {
                         }
                     }
                 })
-
+                .state('profile', {
+                    url: '/:number/profile/:change',
+                    views: {
+                        //overall structre of page is decided by pageContent
+                        //headerView, layoutView and footerView are the parts of the page
+                        "pageContent": {
+                            templateUrl: "components/common/templates/main-view.html"
+                        },
+                        "headerView@profile": {
+                            templateUrl: "components/common/templates/header.html"
+                        },
+                        "layoutView@profile": {
+                            templateUrl: "components/profile/templates/view.html",
+                            controller: "profileController as hc",
+                            access: {restricted: false},
+                            resolve: {
+                                load: ["$q", "$rootScope", function($q, $rootScope){
+                                    var dependency = ["profileCtrl"];
+                                    return resolveDependencies($q, $rootScope, dependency);
+                                }]
+                            }
+                        },
+                        "footerView@profile": {
+                            templateUrl: "components/common/templates/footer.html"
+                        }
+                    }
+                })
                 .state('order', {
                     url: '/:number/order',
                     views: {

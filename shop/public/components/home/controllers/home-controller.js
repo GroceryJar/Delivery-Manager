@@ -34,27 +34,64 @@ define(['application'], function(app) {
                 var map = new google.maps.Map(document.getElementById("map"), myOptions);
                 directionsDisplay.setMap(map);
 
-                var points = [];
+                window.points = [];
+                window.priorityPoints = [];
+                window.myData = [];
                 for (var count = 0; count < $scope.myData.length; count++) {
-                    points.push({
-                        location: $scope.myData[count].address,
-                        stopover: true
+                    
+                    window.myData.push({
+                            location: $scope.myData[count].address,
+                            stopover: true
                     });
+                    
+                    if($scope.myData[count].type != "P0") {
+                        window.points.push({
+                            location: $scope.myData[count].address,
+                            stopover: true
+                        });
+                    }  
+
+                    if($scope.myData[count].type == "P0") {
+                        window.priorityPoints.push(count + 1);
+                    }
                 }
 
                 var request = {
                     origin: new google.maps.LatLng($scope.lat, $scope.long),
                     destination: new google.maps.LatLng($scope.lat, $scope.long),
-                    waypoints: points,
+                    waypoints: window.points,
                     optimizeWaypoints: true,
                     travelMode: google.maps.DirectionsTravelMode.DRIVING
                 };
 
-                directionsService.route(request, function(response, status) {
-                    if (status == google.maps.DirectionsStatus.OK) {
+                window.lat = $scope.lat;
+                window.long = $scope.long;
 
-                        directionsDisplay.setDirections(response);
+                directionsService.route(request, function(response, status) {
+                    var finalPoints = [];
+                    for(var i = 0; i < response.routes[0].waypoint_order.length; i++) {
+                        finalPoints.push(window.points[i]);
                     }
+
+                    for(var i = 0; i < window.priorityPoints.length; i++) {
+                       finalPoints.unshift(myData[window.priorityPoints[i]]);
+                    }
+
+                     var oRequest = {
+                        origin: new google.maps.LatLng(window.lat, window.long),
+                        destination: new google.maps.LatLng(window.lat, window.long),
+                        waypoints: finalPoints,
+                        travelMode: google.maps.DirectionsTravelMode.DRIVING
+                    };
+
+                    directionsService.route(oRequest, function(oResponse, oStatus) {
+                        //window.points
+                        if (oStatus == google.maps.DirectionsStatus.OK) {
+                            directionsDisplay.setDirections(oResponse);
+                        }
+                    });
+
+                    
                 });
             }
             $scope.generateMap = function() {
@@ -65,6 +102,21 @@ define(['application'], function(app) {
             $scope.trackLocation = function() {
                 if ($scope.orderNumber) {
                     $scope.changeRoute('/' + $scope.orderNumber + '/order');
+                } else {
+                    alert('Enter correct order number');
+                }
+            }
+
+            $scope.addWallet = function() {
+                var change = 0;
+                var order = $scope.myData.find(function(item) {
+                    return item.orderNumber == $scope.orderNumber ;
+                });
+                if(order) {
+                    change = order.changeAmount;
+                }
+                if ($scope.orderNumber) {
+                    $scope.changeRoute('/' + $scope.orderNumber + '/profile/' + change);
                 } else {
                     alert('Enter correct order number');
                 }
@@ -148,7 +200,7 @@ define(['application'], function(app) {
                         width: '100px'
                     }, {
                         field: 'type',
-                        displayName: 'Delivery Type',
+                        displayName: 'Priority',
                         width: '100px'
                     }, {
                         field: 'dateOfOrder',
