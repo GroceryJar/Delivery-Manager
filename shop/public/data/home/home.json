@@ -1,7 +1,7 @@
 [
     {
       "customerName":"Yogesh Singh",
-      "address": "Cyber gateway",
+      "address": "Nandini Layout",
       "pinCode": "500081",
       "price": "10012",
       "productName": "Moto G",
@@ -14,7 +14,7 @@
 
     {
       "customerName":"Nisha",
-      "address": "Madhapur",
+      "address": "Mahalakshmi Layout",
       "pinCode": "500081",
       "price": "40013",
       "productName": "Nexus",
@@ -27,7 +27,7 @@
 
     {
       "customerName":"Pradeep",
-      "address": "Lingampally",
+      "address": "Gokula Extension",
       "pinCode": "500019",
       "price": "50017",
       "productName": "IPhone",
@@ -39,7 +39,7 @@
     },
   {
     "customerName":"Govi",
-    "address": "Jubilee hills",
+    "address": "Mathikere",
     "pinCode": "500033",
     "price": "20019",
     "productName": "Washing machine",
@@ -51,7 +51,7 @@
   },
   {
     "customerName":"Sudha",
-    "address": "Miyapur",
+    "address": "Iskcon Bangalore",
     "pinCode": "500049",
     "price": "50018",
     "productName": "IPhone",
@@ -63,7 +63,7 @@
   },
   {
     "customerName":"Sumeet Singh",
-    "address": "Kokapet",
+    "address": "Nagashetty Halli",
     "pinCode": "500075",
     "price": "1515",
     "productName": "Bag",
@@ -75,7 +75,7 @@
   },
   {
     "customerName":"Jeevan",
-    "address": "Falaknuma",
+    "address": "SanjayNagar",
     "pinCode": "500053",
     "price": "30019",
     "productName": "Samsung",
@@ -87,7 +87,7 @@
   },
   {
     "customerName":"Ankita",
-    "address": "Banjara hills",
+    "address": "Peenya",
     "pinCode": "500034",
     "price": "20013",
     "productName": "One Plus",
