@@ -26,7 +26,7 @@ define(['application'], function(app) {
                 var directionsService = new google.maps.DirectionsService();
                 var directionsDisplay = new google.maps.DirectionsRenderer();
 
-                var myOptions = {   
+                var myOptions = {
                     zoom: 7,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 }
@@ -38,21 +38,21 @@ define(['application'], function(app) {
                 window.priorityPoints = [];
                 window.myData = [];
                 for (var count = 0; count < $scope.myData.length; count++) {
-                    
+
                     window.myData.push({
-                            location: $scope.myData[count].address,
-                            stopover: true
+                        location: $scope.myData[count].address,
+                        stopover: true
                     });
-                    
-                    if($scope.myData[count].type != "P0") {
+
+                    if ($scope.myData[count].type != "P0") {
                         window.points.push({
                             location: $scope.myData[count].address,
                             stopover: true
                         });
-                    }  
+                    }
 
-                    if($scope.myData[count].type == "P0") {
-                        window.priorityPoints.push(count + 1);
+                    if ($scope.myData[count].type == "P0") {
+                        window.priorityPoints.push(count);
                     }
                 }
 
@@ -69,33 +69,30 @@ define(['application'], function(app) {
 
                 directionsService.route(request, function(response, status) {
                     var finalPoints = [];
-                    for(var i = 0; i < response.routes[0].waypoint_order.length; i++) {
+                    for (var i = 0; i < response.routes[0].waypoint_order.length; i++) {
                         finalPoints.push(window.points[i]);
                     }
 
-                    for(var i = 0; i < window.priorityPoints.length; i++) {
-                       finalPoints.unshift(myData[window.priorityPoints[i]]);
+                    for (var i = 0; i < window.priorityPoints.length; i++) {
+                        finalPoints.unshift(myData[window.priorityPoints[i]]);
                     }
 
-                     var oRequest = {
+                    var oRequest = {
                         origin: new google.maps.LatLng(window.lat, window.long),
                         destination: new google.maps.LatLng(window.lat, window.long),
                         waypoints: finalPoints,
                         travelMode: google.maps.DirectionsTravelMode.DRIVING
                     };
-
                     directionsService.route(oRequest, function(oResponse, oStatus) {
-                        //window.points
                         if (oStatus == google.maps.DirectionsStatus.OK) {
                             directionsDisplay.setDirections(oResponse);
                         }
                     });
 
-                    
+
                 });
             }
             $scope.generateMap = function() {
-
                 showMap();
             }
 
@@ -110,9 +107,9 @@ define(['application'], function(app) {
             $scope.addWallet = function() {
                 var change = 0;
                 var order = $scope.myData.find(function(item) {
-                    return item.orderNumber == $scope.orderNumber ;
+                    return item.orderNumber == $scope.orderNumber;
                 });
-                if(order) {
+                if (order) {
                     change = order.changeAmount;
                 }
                 if ($scope.orderNumber) {
